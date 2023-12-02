@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AppComponent } from './app.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: "", component: AppComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "logout", component: LogoutComponent},
   { path: "dashboard", component: DashboardComponent},
+  { path: "user-list", component: UserListComponent},
+  { path: "user-profile", component: UserProfileComponent},
 ];
 
 @NgModule({

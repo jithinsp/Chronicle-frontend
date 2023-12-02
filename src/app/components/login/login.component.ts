@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       (response) => {
         console.log(response);
         if (response.jwtToken != null) {
-          alert("Hello, Your token is " + response.jwtToken);
+          // alert("Hello, Your token is " + response.jwtToken);
           const jwtToken = response.jwtToken;
           localStorage.setItem('jwt', jwtToken);
           this.router.navigateByUrl("/dashboard");

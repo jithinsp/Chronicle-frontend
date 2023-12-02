@@ -11,16 +11,24 @@ export class NavbarComponent implements DoCheck {
 
   jwtTok:string | null;
   isLogged: boolean=false;
+  isAdmin: boolean=false;
+  role: string='';
 
   constructor(private jwtService: JwtService){}
-
 
   ngDoCheck(): void {
     this.jwtTok= localStorage.getItem('jwt');
     if(this.jwtTok!=null){
       this.isLogged=true;
+      this.role=this.jwtService.extractRole();
+      if(this.role === '[ROLE_ADMIN]'){
+        this.isAdmin=true;
+      } else{
+        this.isAdmin=false;
+      }
     } else{
-      this.isLogged
+      this.isLogged = false;
+      this.isAdmin=false;
     }
   }
 }
