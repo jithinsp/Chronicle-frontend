@@ -2,6 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,6 +30,9 @@ import { UserReducer } from './state/uesr.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthGuard } from './AuthGuard';
+import { NewcompComponent } from './components/newcomp/newcomp.component';
 
 @NgModule({
   declarations: [
@@ -39,12 +43,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LogoutComponent,
     NavbarComponent,
     UserListComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    NewcompComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     MatCardModule, 
     MatFormFieldModule,
@@ -58,12 +64,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({user:UserReducer}),
     EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument({maxAge:50, logOnly: !isDevMode()})
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

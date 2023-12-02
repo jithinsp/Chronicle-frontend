@@ -2,7 +2,7 @@ export interface User {
     id: number;
     name: string;
     email: string;
-    passsword: string;
+    password: string;
     role: string;
     isActive: boolean;
   }

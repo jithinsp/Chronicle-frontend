@@ -7,7 +7,7 @@ export const UserState: UserModel={
         id: 0,
         name: "",
         email: "",
-        passsword: "",
+        password: "",
         role: "ROLE_USER",
         isActive: true
     }

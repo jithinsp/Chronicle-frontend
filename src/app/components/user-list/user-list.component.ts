@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { JwtService } from 'src/app/service/jwt.service';
 import { loadUser } from 'src/app/state/user.actions';
@@ -13,8 +11,8 @@ import { getuserlist } from 'src/app/state/user.selectors';
 })
 export class UserListComponent implements OnInit {
   users: any[] = []; // Define a property to hold user data
-  @ViewChild(MatPaginator)paginator!:MatPaginator;
-  @ViewChild(MatSort)sort!:MatSort;
+  // filteredUsers: any[] = [];
+  // searchTerm: string = '';
 
   constructor(private jwtService: JwtService, private store: Store) {}
 
@@ -34,7 +32,25 @@ export class UserListComponent implements OnInit {
     this.store.select(getuserlist).subscribe(item=>{
       this.users = item;
       console.log(this.users);
-      // this.users.paginator=this.paginator;
     });
   }
+
+  onDeleteUser(userId: number) {
+    this.jwtService.deleteUser(userId).subscribe(
+      () => {
+        console.log("user deleted successfully");
+        location.reload();
+      },
+      (error) => {
+        console.error('Error deleting user:', error);
+      }
+    );
+  }
+
+  // onSearch(): void {
+  //   this.filteredUsers = this.users.filter((user) =>
+  //     user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  //   );
+  // }
+  
 }

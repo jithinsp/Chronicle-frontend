@@ -10,6 +10,7 @@ const BASE_URL = ["http://localhost:8082/"]
 export class JwtService {
 
   constructor(private http:HttpClient) { }
+
 register(signRequest:any):Observable<any> {
   return this.http.post(BASE_URL + 'signup', signRequest);
 }
@@ -21,6 +22,12 @@ login(loginRequest:any): Observable<any> {
 logout():void{
   localStorage.removeItem('jwt');
   this.http.post(BASE_URL + 'logout',{});
+}
+
+deleteUser(userId: number): Observable<any> {
+  return this.http.delete(BASE_URL + 'admin/delete/' +userId, {
+    headers: this.createAuthorizationHeader()
+  });
 }
 
 extractRole(): string | null {
@@ -85,5 +92,9 @@ private createAuthorizationHeader(){
   return null;
 }
 
-}
 
+observable = new Observable ((data)=>{
+  data.next("data");
+})
+
+}

@@ -7,13 +7,14 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthGuard } from './AuthGuard';
 
 const routes: Routes = [
-  { path: "", component: AppComponent},
+  { path: "", redirectTo: "dashboard", pathMatch: 'full'},
+  { path: "dashboard", component: DashboardComponent , canActivate: [AuthGuard]},
   { path: "register", component: RegisterComponent},
   { path: "login", component: LoginComponent},
   { path: "logout", component: LogoutComponent},
-  { path: "dashboard", component: DashboardComponent},
   { path: "user-list", component: UserListComponent},
   { path: "user-profile", component: UserProfileComponent},
 ];
