@@ -26,13 +26,26 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UserReducer } from './state/uesr.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatNativeDateModule} from '@angular/material/core';
 import { AuthGuard } from './AuthGuard';
-import { NewcompComponent } from './components/newcomp/newcomp.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FamilyRegisterComponent } from './components/family-register/family-register.component';
+import { CreateFamilyComponent } from './components/create-family/create-family.component';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
+import { MemberComponent } from './components/member/member.component';
+import { CreateMemberComponent } from './components/create-member/create-member.component';
+import { CreateTypeComponent } from './components/accounts/create-type/create-type.component';
+import { AccountTypeComponent } from './components/accounts/account-type/account-type.component';
+import { CashComponent } from './components/accounts/cash/cash.component';
+import { InsertCashComponent } from './components/accounts/insert-cash/insert-cash.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +57,20 @@ import { NewcompComponent } from './components/newcomp/newcomp.component';
     NavbarComponent,
     UserListComponent,
     UserProfileComponent,
-    NewcompComponent
+    SidebarComponent,
+    FamilyRegisterComponent,
+    CreateFamilyComponent,
+    DeleteConfirmationComponent,
+    MemberComponent,
+    CreateMemberComponent,
+    CreateTypeComponent,
+    AccountTypeComponent,
+    CashComponent,
+    InsertCashComponent
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -64,7 +87,10 @@ import { NewcompComponent } from './components/newcomp/newcomp.component';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({user:UserReducer}),
     EffectsModule.forRoot([UserEffects]),

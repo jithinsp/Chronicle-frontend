@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <ng-container *ngIf="user.role.roleName != 'ROLE_ADMIN'">
+        <ng-container *ngIf="user.role.roleName != 'ROLE_ACCOUNTANT'">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>

@@ -21,7 +21,7 @@ export class NavbarComponent implements DoCheck {
     if(this.jwtTok!=null){
       this.isLogged=true;
       this.role=this.jwtService.extractRole();
-      if(this.role === '[ROLE_ADMIN]'){
+      if(this.role === '[ROLE_ACCOUNTANT]'){
         this.isAdmin=true;
       } else{
         this.isAdmin=false;

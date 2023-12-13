@@ -1,0 +1,19 @@
+<div class="container">
+    <mat-card *ngFor="let type of types">
+        <mat-card-header>
+          <mat-card-title>Number: {{ type.id }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Type:</strong> {{ type.type }}</p>
+          <p><strong>Description:</strong> {{ type.description }}</p>
+          <!-- <p><strong>dateOfBirth:</strong> {{ member.dateOfBirth }}</p> -->
+        <!-- <div class="d-flex justify-content-center p-3">
+          <button class="mx-2" mat-raised-button color="primary">Edit <mat-icon>edit</mat-icon></button>
+          <button mat-raised-button color="warn" (click)="deleteFamily(family.id)">Delete <mat-icon>delete</mat-icon></button>
+        </div> -->
+        </mat-card-content>
+      </mat-card>
+    <!-- </div> -->
+      
+      
+</div>

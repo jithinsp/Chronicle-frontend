@@ -49,7 +49,7 @@ extractRole(): string | null {
 
 hello(): Observable<any> {
   const jwtToken = localStorage.getItem('jwt');
-  if(this.extractRole()==='[ROLE_ADMIN]'){
+  if(this.extractRole()==='[ROLE_ACCOUNTANT]'){
     console.log("admin side");
     return this.http.get(BASE_URL + 'admin/hi ', {
       headers: this.createAuthorizationHeader()
@@ -64,7 +64,7 @@ hello(): Observable<any> {
 
 getAllUsers(): Observable<any>{
   const jwtToken = localStorage.getItem('jwt');
-  if(this.extractRole()==='[ROLE_ADMIN]'){
+  if(this.extractRole()==='[ROLE_ACCOUNTANT]'){
     return this.http.get(BASE_URL + 'admin/users', {
       headers: this.createAuthorizationHeader()
     });
@@ -93,8 +93,5 @@ private createAuthorizationHeader(){
 }
 
 
-observable = new Observable ((data)=>{
-  data.next("data");
-})
 
 }
