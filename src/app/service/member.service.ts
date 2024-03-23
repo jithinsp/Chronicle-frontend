@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtService } from './jwt.service';
+import { API_MEMBER_SERVICE } from 'src/app/constants/baseurls.constants';
 
-const BASE_URL = "http://localhost:8200/register/members/"
+const BASE_URL = API_MEMBER_SERVICE
 @Injectable({
   providedIn: 'root'
 })

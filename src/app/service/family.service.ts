@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JwtService } from './jwt.service';
+import { API_FAMILY_SERVICE } from 'src/app/constants/baseurls.constants';
 
-const BASE_URL = "http://localhost:8200/register/"
+const BASE_URL = API_FAMILY_SERVICE
 @Injectable({
   providedIn: 'root'
 })

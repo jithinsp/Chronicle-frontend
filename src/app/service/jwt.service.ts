@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { API_AUTH_SERVICE } from 'src/app/constants/baseurls.constants';
 
-const BASE_URL = ["http://localhost:8200/"]
+const BASE_URL = API_AUTH_SERVICE
 @Injectable({
   providedIn: 'root'
 })
