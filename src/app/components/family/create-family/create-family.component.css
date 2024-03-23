@@ -1,0 +1,45 @@
+
+  /* .create-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  } */
+  
+  .create-full-width {
+    width: 100%;
+  }
+
+  .form-card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .cols {
+    flex: 0;
+  }
+  .col {
+    flex: 1;
+  }
+  
+  /* Adjust field width */
+  .mat-form-field {
+    width: 100%;
+    max-width: 500px; /* Adjust the maximum width as needed */
+  }
+  
+  /* Adjust label width */
+  .mat-form-field-label {
+    max-width: 200px; /* Adjust the maximum label width */
+  }
+  

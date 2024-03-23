@@ -9,11 +9,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DeleteConfirmationComponent {
   constructor(public dialogRef: MatDialogRef<DeleteConfirmationComponent>) {}
 
-  onNoClick(): void {
-    this.dialogRef.close(false);
-  }
+  // onNoClick(): void {
+  //   this.dialogRef.close(false);
+  // }
 
-  onYesClick(): void {
-    this.dialogRef.close(true);
-  }
+  // onYesClick(): void {
+  //   this.dialogRef.close(true);
+  // }
 }

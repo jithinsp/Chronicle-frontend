@@ -1,6 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,16 +36,20 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatNativeDateModule} from '@angular/material/core';
 import { AuthGuard } from './AuthGuard';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { FamilyRegisterComponent } from './components/family-register/family-register.component';
-import { CreateFamilyComponent } from './components/create-family/create-family.component';
+import { FamilyRegisterComponent } from './components/family/family-register/family-register.component';
+import { CreateFamilyComponent } from './components/family/create-family/create-family.component';
 import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
-import { MemberComponent } from './components/member/member.component';
-import { CreateMemberComponent } from './components/create-member/create-member.component';
+import { MemberComponent } from './components/family/member/member.component';
+import { CreateMemberComponent } from './components/family/create-member/create-member.component';
 import { CreateTypeComponent } from './components/accounts/create-type/create-type.component';
 import { AccountTypeComponent } from './components/accounts/account-type/account-type.component';
 import { CashComponent } from './components/accounts/cash/cash.component';
 import { InsertCashComponent } from './components/accounts/insert-cash/insert-cash.component';
+import { AuthInterceptor } from './service/auth-interceptor.interceptor';
+import { FamilyDetailedComponent } from './components/family/family-detailed/family-detailed.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { AccountsDashboardComponent } from './components/accounts/accounts-dashboard/accounts-dashboard.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,6 @@ import { InsertCashComponent } from './components/accounts/insert-cash/insert-ca
     NavbarComponent,
     UserListComponent,
     UserProfileComponent,
-    SidebarComponent,
     FamilyRegisterComponent,
     CreateFamilyComponent,
     DeleteConfirmationComponent,
@@ -66,7 +69,10 @@ import { InsertCashComponent } from './components/accounts/insert-cash/insert-ca
     CreateTypeComponent,
     AccountTypeComponent,
     CashComponent,
-    InsertCashComponent
+    InsertCashComponent,
+    FamilyDetailedComponent,
+    AccountsDashboardComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -91,12 +97,20 @@ import { InsertCashComponent } from './components/accounts/insert-cash/insert-ca
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({user:UserReducer}),
     EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument({maxAge:50, logOnly: !isDevMode()})
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

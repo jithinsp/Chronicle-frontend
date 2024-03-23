@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
 
-const BASE_URL = ["http://localhost:8082/"]
+const BASE_URL = ["http://localhost:8200/"]
 @Injectable({
   providedIn: 'root'
 })
@@ -25,9 +25,7 @@ logout():void{
 }
 
 deleteUser(userId: number): Observable<any> {
-  return this.http.delete(BASE_URL + 'admin/delete/' +userId, {
-    headers: this.createAuthorizationHeader()
-  });
+  return this.http.delete(BASE_URL + 'admin/delete/' +userId);
 }
 
 extractRole(): string | null {
@@ -51,35 +49,31 @@ hello(): Observable<any> {
   const jwtToken = localStorage.getItem('jwt');
   if(this.extractRole()==='[ROLE_ACCOUNTANT]'){
     console.log("admin side");
-    return this.http.get(BASE_URL + 'admin/hi ', {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.http.get(BASE_URL + 'admin/hi '
+    // , {
+    //   headers: this.createAuthorizationHeader()
+    // }
+    );
   } else{
     console.log("user side");
-    return this.http.get(BASE_URL + 'api/hello', {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.http.get(BASE_URL + 'api/hello');
   }
 }
 
 getAllUsers(): Observable<any>{
   const jwtToken = localStorage.getItem('jwt');
   if(this.extractRole()==='[ROLE_ACCOUNTANT]'){
-    return this.http.get(BASE_URL + 'admin/users', {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.http.get(BASE_URL + 'admin/users');
   } else {
     return null;
   }
 }
 
 getUserProfile(): Observable<any>{
-    return this.http.get(BASE_URL + 'api/profile', {
-      headers: this.createAuthorizationHeader()
-    });
+    return this.http.get(BASE_URL + 'admin/profile');
 }
 
-private createAuthorizationHeader(){
+  public createAuthorizationHeader(){
   const jwtToken = localStorage.getItem('jwt');
   if(jwtToken){
     console.log("JWT token found in local storage", jwtToken);

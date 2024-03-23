@@ -3,4 +3,32 @@
     background-color: #ffffff; 
     color: #ffffff;
   }
-  
+  /* Ensure the parent container has full height */
+/* .mat-drawer-content {
+  height: 100%;
+}
+.footer {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+} */
+.mat-drawer-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0vh;
+  position: relative;
+}
+
+/* Footer style */
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.router-outlet-container {
+  background-image: url('src/assets/istockphoto-1331574354-612x612.jpg');
+  background-size: cover; 
+  /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(196, 141, 255, 0.5));  */
+
+}

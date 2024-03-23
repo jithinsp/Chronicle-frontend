@@ -33,7 +33,7 @@
       </ng-container>
 
       <ng-container *ngIf="isAdmin">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/user-list">Users</a>
         </li>
       </ng-container>
@@ -44,7 +44,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/family-register">Family</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="/logout">Logout</a>
         </li>
@@ -58,48 +58,58 @@
     <mat-drawer #drawer opened="true" mode="side" position="start" >
     <mat-nav-list  *ngIf="isAdmin">
         
-        <mat-list-item>
+        <!-- <mat-list-item>
             <button routerLink="" mat-button><mat-icon>home</mat-icon> Home</button>
-        </mat-list-item>
-        <mat-list-item class="mat-elevation-z4 mat-accent">
+        </mat-list-item> -->
+        <!-- <mat-list-item class="mat-elevation-z4 mat-accent">
           <h4>Register Module</h4>
-          </mat-list-item>
-        <mat-list-item>
+          </mat-list-item>-->
+        <mat-list-item> 
           <button routerLink="/family-register" mat-button class="light-button"><mat-icon>dashboard</mat-icon> Family</button>
       </mat-list-item>
-         <mat-list-item>
+         <!-- <mat-list-item>
             <button routerLink="create-family" mat-button><mat-icon>create</mat-icon> Create Family</button>
-        </mat-list-item>
+        </mat-list-item> 
       <mat-list-item>
             <button routerLink="members" mat-button><mat-icon>table</mat-icon> Members</button>
         </mat-list-item>
 
         <mat-list-item>
             <button routerLink="create-member" mat-button><mat-icon>create</mat-icon> Create Member</button>
-        </mat-list-item>
-        <mat-list-item class="mat-elevation-z4 mat-accent">
+        </mat-list-item>-->
+        <!-- <mat-list-item class="mat-elevation-z4 mat-accent">
         <h4>Accounts Module</h4>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item>
-          <button routerLink="account-type" mat-button><mat-icon>analytics</mat-icon> Account Type</button>
+          <button routerLink="account-dashboard" mat-button><mat-icon>account_balance</mat-icon> Accounts</button>
       </mat-list-item>  
         <mat-list-item>
+          <button routerLink="account-type" mat-button><mat-icon>account_balance_wallet</mat-icon> Account Type</button>
+      </mat-list-item>  
+        <!-- <mat-list-item>
             <button routerLink="create-type" mat-button><mat-icon>create</mat-icon> Create type</button>
-        </mat-list-item>
+        </mat-list-item> -->
         
-        <mat-list-item>
-          <button routerLink="cash" mat-button><mat-icon>analytics</mat-icon> Cash</button>
-      </mat-list-item>
-        <mat-list-item>
+        <!-- <mat-list-item>
+          <button routerLink="cash" mat-button><mat-icon>account_balance_wallet</mat-icon> Cash</button>
+      </mat-list-item> -->
+        <!-- <mat-list-item>
           <button routerLink="create-cash" mat-button><mat-icon>create</mat-icon> Insert Cash Entry</button>
-      </mat-list-item>
+      </mat-list-item> -->
       
     </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
-        <div style="text-align: center;min-height: 600px;">
-
-            <router-outlet></router-outlet>
+        <div class="router-outlet-container" style="text-align: center;min-height: 600px;">
+          <!-- <mat-drawer-content class="d-flex flex-column">
+            <div style="flex: 1;"> -->
+          <router-outlet></router-outlet>
+          <!-- Footer -->
+          <!-- <footer class="footer mt-auto py-3 bg-light text-dark">
+            <div class="container text-center">
+              Powered By corner 2024
             </div>
+          </footer> -->
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>

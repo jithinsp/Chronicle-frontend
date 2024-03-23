@@ -1,0 +1,74 @@
+<mat-card>
+    <div class="container">
+      <h2>{{title}} family</h2>
+      <form class="create-form" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+        <div class="form-group row">
+          <div class="cols">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>Family Number</mat-label>
+              <input matInput formControlName="familyNumber" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>House Name</mat-label>
+              <input matInput formControlName="houseName" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>House Name(Malayalam)</mat-label>
+              <input matInput formControlName="alias" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>Area</mat-label>
+              <input matInput formControlName="area" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>Area(Malayalam)</mat-label>
+              <input matInput formControlName="aliasArea" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>Place</mat-label>
+              <input matInput formControlName="place" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>District</mat-label>
+              <input matInput formControlName="district" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>State</mat-label>
+              <input matInput formControlName="state" />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="create-full-width" appearance="fill">
+              <mat-label>Post Code</mat-label>
+              <input matInput type="number" formControlName="postCode" />
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </mat-card>
+
+  

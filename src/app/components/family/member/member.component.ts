@@ -18,6 +18,7 @@ export class MemberComponent {
 
 
   fetchMembers() {
+    // this.service.getFamilyMembers().subscribe(
     this.service.getMembers().subscribe(
       (response) => {
         this.members = response;

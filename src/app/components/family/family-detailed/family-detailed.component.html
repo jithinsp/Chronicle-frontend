@@ -1,0 +1,87 @@
+<div class="container">
+    <mat-card *ngIf="members.length > 0">
+        <mat-card-header>
+          <mat-card-title>Family Details: {{ members[0]?.family?.familyNumber }} - {{ members[0]?.family?.alias }} - {{ members[0]?.family?.aliasArea }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="family-details-content">
+          <p>{{ members[0]?.family?.houseName }}, {{ members[0]?.family?.area }}, {{ members[0]?.family?.place }}, {{ members[0]?.family?.district }}, {{ members[0]?.family?.state }}, {{ members[0]?.family?.postCode }}</p>
+        </mat-card-content>
+      </mat-card>
+      
+      <table mat-table [dataSource]="members" class="mat-elevation-z8 mat-table">
+
+        <!-- Columns displayed in the main table -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let member">{{ member.id }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let member">{{ member.name }} ({{ member.alias }})</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="sex">
+          <th mat-header-cell *matHeaderCellDef>Sex</th>
+          <td mat-cell *matCellDef="let member">{{ member.sex }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="relationWithHouseHolder">
+          <th mat-header-cell *matHeaderCellDef>Relation</th>
+          <td mat-cell *matCellDef="let member">{{ member.relationWithHouseHolder }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let member">{{ member.phone }}</td>
+        </ng-container>
+      
+        <ng-container matColumnDef="parentFamily">
+          <th mat-header-cell *matHeaderCellDef>Parent Family</th>
+          <td mat-cell *matCellDef="let member">{{ member.parentFamily.alias }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let member">
+            <div class="action-buttons">
+              <button mat-raised-button color="dark" class="ml-1" (click)="editMember(member.id)"><mat-icon>edit</mat-icon></button>
+              <button mat-raised-button color="warn" (click)="deleteMember(member.id)"><mat-icon>delete</mat-icon></button>
+              <button mat-raised-button color="primary" (click)="showCashByMember(member.id)"><mat-icon>account_balance</mat-icon></button>
+            </div>
+          </td>
+        </ng-container>
+      
+        <!-- Expansion panel for additional columns -->
+        <ng-container matColumnDef="additionalDetails">
+          <th mat-header-cell *matHeaderCellDef>Details</th>
+          <td mat-cell *matCellDef="let member" colspan="6">
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Additional Details
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  Click to view info
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              
+              <p>Email: {{ member.email }}</p>
+              <p>Education: {{ member.education }}</p>
+              <p>Date of Birth: {{ member.dateOfBirth | date: 'dd/MM/yyyy' }}</p>
+              <p>Date of Baptism: {{ member.dateOfBaptism | date: 'dd/MM/yyyy' }}</p>
+              <p>Date of Holy Communion: {{ member.dateOfHolyCommunion | date: 'dd/MM/yyyy' }}</p>
+              <p>Date of Join: {{ member.dateOfJoin | date: 'dd/MM/yyyy' }}</p>
+              <p>Reason of Join: {{ member.reasonOfJoin }}</p>
+              <p>Date of Leaving: {{ member.dateOfLeaving | date: 'dd/MM/yyyy' }}</p>
+              <p>Reason of Leaving: {{ member.reasonOfLeaving }}</p>
+            </mat-expansion-panel>
+          </td>
+      </ng-container>
+      
+        <!-- Column Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+</div>

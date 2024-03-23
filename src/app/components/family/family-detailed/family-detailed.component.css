@@ -1,0 +1,26 @@
+.family-details-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .action-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .action-buttons button {
+    margin-right: 8px; /* Adjust spacing between buttons */
+  }
+  
+/* For mat-card */
+.mat-card {
+  background-color: rgba(255, 255, 255, 0.9); /* Adjust the color and opacity as needed */
+}
+
+/* For mat-table */
+.mat-table {
+  background-color: rgba(255, 255, 255, 0.9); /* Adjust the color and opacity as needed */
+}
+.container {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the color and opacity as needed */
+}
