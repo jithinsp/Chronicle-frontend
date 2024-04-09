@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
     if (jwtTok) {
       return true; 
     } else {
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/home']); 
       return false;
     }
   }
