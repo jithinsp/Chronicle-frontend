@@ -31,9 +31,9 @@ export class CreateFamilyComponent {
         alias: [''],
         area: ['',[Validators.required]],
         aliasArea: [''],
-        place: ['',[Validators.required]],
-        district: ['',[Validators.required]],
-        state: ['',[Validators.required]],
+        place: [''],
+        district: [''],
+        state: [''],
         postCode: ['',[Validators.pattern('^[0-9]*$')]],
       })
       this.route.queryParams.subscribe(params => {

@@ -136,12 +136,13 @@ export class CreateMemberComponent {
     ];
   
     dateFields.forEach(field => {
-      const date = new Date(formData[field]);
-      const isoString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
-      formattedData[field] = isoString;
-      // if (formData[field] instanceof Date) {
-      //   formattedData[field] = formData[field].toISOString();
-      // }
+      if (formData[field]) {
+        const date = new Date(formData[field]);
+        const isoString = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString();
+        formattedData[field] = isoString;
+      } else {
+        formattedData[field] = null;
+      }
     });
   
     return formattedData;
