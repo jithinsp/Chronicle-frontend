@@ -1,39 +1,33 @@
 <div class="container mt-2">
-
-
     <ng-container>
-        <div class="container flex-wrap">
-            <div class="flex justify-between py-3">
-                <!-- <div class="flex justify-around py-3"> -->
-                    <button (click)="openMonthly()" mat-raised-button color="primary">
-                        <mat-icon>calendar_today</mat-icon>Monthly
-                      </button>
-                    <button (click)="openCreate()" mat-raised-button color="primary">
-                      <mat-icon>create</mat-icon> Create Type
-                    </button>
-                    <button (click)="openCreateCash()" mat-raised-button color="primary">
-                      <mat-icon>create</mat-icon> Insert Cash Entry
-                    </button>
-                  <!-- </div> -->
-                <!-- <mat-card class="mat-card-new mx-2 my-2 mat-card-button" (click)="openCreate()">
-                    <mat-card-content>
-                        <h4><mat-icon>account_balance_wallet</mat-icon> New Type</h4>
-                    </mat-card-content>
-                </mat-card>
-
-                <mat-card class="mat-card-new mx-2 my-2 mat-card-button" (click)="openCreateCash()">
-                    <mat-card-content>
-                        <h4><mat-icon>account_balance</mat-icon> Insert Cash Entry</h4>
-                    </mat-card-content>
-                </mat-card> -->
-            </div>
-            <div class="flex">
-                <mat-card *ngFor="let type of types" class="mx-2 my-2 mat-card-button" (click)="openType(type.id)">
-                    <mat-card-content>
-                        <h4>{{ type.type }}</h4>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+      <div class="container">
+        <div class="row">
+          <!-- Buttons Section -->
+          <div class="col-md-4 mb-2">
+            <button (click)="openMonthly()" mat-raised-button color="primary" class="w-100">
+              <mat-icon>date_range</mat-icon>Monthly
+            </button>
+          </div>
+          <div class="col-md-4 mb-2">
+            <button (click)="openCreate()" mat-raised-button color="primary" class="w-100">
+              <mat-icon>library_add</mat-icon> <span class="d-none d-md-inline">Create </span>Type
+            </button>
+          </div>
+          <div class="col-md-4 mb-2">
+            <button (click)="openCreateCash()" mat-raised-button color="primary" class="w-100">
+              <mat-icon>payment</mat-icon> <span class="d-none d-md-inline">Insert </span>Cash
+            </button>
+          </div>
+          <!-- Cards Section -->
+          <div class="col-md-4" *ngFor="let type of types">
+            <mat-card class="my-2">
+              <mat-card-content>
+                <h4>{{ type.type }}</h4>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
+      </div>
     </ng-container>
-</div>
+  </div>
+  
