@@ -18,9 +18,11 @@ import { AccountTypeComponent } from './components/accounts/account-type/account
 import { InsertCashComponent } from './components/accounts/insert-cash/insert-cash.component';
 import { FamilyDetailedComponent } from './components/family/family-detailed/family-detailed.component';
 import { AccountsDashboardComponent } from './components/accounts/accounts-dashboard/accounts-dashboard.component';
+import { HomePageComponent } from './components/home/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "dashboard", pathMatch: 'full'},
+  { path: "", redirectTo: "home", pathMatch: 'full'},
+  { path: "home", component: HomePageComponent},
   { path: "dashboard", component: DashboardComponent , canActivate: [AuthGuard]},
   { path: "register", component: RegisterComponent},
   { path: "login", component: LoginComponent},

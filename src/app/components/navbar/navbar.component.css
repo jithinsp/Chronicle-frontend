@@ -3,6 +3,14 @@
     background-color: #ffffff; 
     color: #ffffff;
   }
+
+.home-nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
   /* Ensure the parent container has full height */
 /* .mat-drawer-content {
   height: 100%;

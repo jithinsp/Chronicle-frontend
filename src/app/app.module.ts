@@ -50,6 +50,7 @@ import { FamilyDetailedComponent } from './components/family/family-detailed/fam
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AccountsDashboardComponent } from './components/accounts/accounts-dashboard/accounts-dashboard.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { HomePageComponent } from './components/home/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     InsertCashComponent,
     FamilyDetailedComponent,
     AccountsDashboardComponent,
-    PaginationComponent
+    PaginationComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
