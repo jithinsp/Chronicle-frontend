@@ -70,7 +70,6 @@ export class CreateTypeComponent {
           // this.registerForm.reset();
           this.resetForm();
           this.showSuccessMessage('Type updated successfully');
-          this.isSubmitting = false;
         },
         (error) => {
           console.error(error);
@@ -86,7 +85,6 @@ export class CreateTypeComponent {
           // this.registerForm.reset();
           this.resetForm();
           this.showSuccessMessage('Type registered successfully');
-          this.isSubmitting = false;
         },
         (error) => {
           console.error(error);
@@ -103,6 +101,7 @@ export class CreateTypeComponent {
   }
 
   resetForm() {
+    this.isSubmitting = false;
     this.registerForm.reset(); // Reset form values
     Object.keys(this.registerForm.controls).forEach(key => {
       this.registerForm.get(key).setErrors(null); // Clear validation errors for each control
