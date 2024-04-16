@@ -13,7 +13,7 @@ export class CreateTypeComponent {
 
   mode: 'create' | 'edit';
   editId: number;
-  title:string='';
+  title: string = '';
   registerForm: FormGroup;
 
   constructor(
@@ -22,11 +22,11 @@ export class CreateTypeComponent {
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      type: ['',[Validators.required]],
+      type: ['', [Validators.required]],
       alias: [''],
       description: [''],
     })
@@ -36,8 +36,8 @@ export class CreateTypeComponent {
       if (this.editId) {
         this.service.getTypeById(this.editId).subscribe(
           (response) => {
-            console.log("type:"+response);
-            
+            console.log("type:" + response);
+
             this.registerForm.patchValue({
               // id: response.id,
               type: response.type,
@@ -51,45 +51,55 @@ export class CreateTypeComponent {
         );
       }
     });
-    this.title=(this.mode==='edit')?'Edit':'Create';
-}
+    this.title = (this.mode === 'edit') ? 'Edit' : 'Create';
+  }
 
-  submitForm(){
+  isSubmitting = false;
+  submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
 
     if (this.mode === 'edit') {
       console.log(this.registerForm.value);
-    this.service.updateType(this.registerForm.value, this.editId).subscribe(
-      (response)=> {
-        console.log("updation success");
-        // this.registerForm.reset();
-        this.resetForm();
-        this.showSuccessMessage('Type updated successfully');
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+      this.service.updateType(this.registerForm.value, this.editId).subscribe(
+        (response) => {
+          console.log("updation success");
+          // this.registerForm.reset();
+          this.resetForm();
+          this.showSuccessMessage('Type updated successfully');
+          this.isSubmitting = false;
+        },
+        (error) => {
+          console.error(error);
+          this.isSubmitting = false;
+        }
+      );
       // Example: this.dataService.updateRecord(this.recordId, this.form.value);
     } else {
-    console.log(this.registerForm.value);
-    this.service.register(this.registerForm.value).subscribe(
-      (response)=> {
-        console.log("register success");
-        // this.registerForm.reset();
-        this.resetForm();
-        this.showSuccessMessage('Type registered successfully');
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+      console.log(this.registerForm.value);
+      this.service.register(this.registerForm.value).subscribe(
+        (response) => {
+          console.log("register success");
+          // this.registerForm.reset();
+          this.resetForm();
+          this.showSuccessMessage('Type registered successfully');
+          this.isSubmitting = false;
+        },
+        (error) => {
+          console.error(error);
+          this.isSubmitting = false;
+        }
+      );
+    }
   }
-}
   showSuccessMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000 // Duration for which the snackbar is displayed (in milliseconds)
     });
-    
+
   }
 
   resetForm() {

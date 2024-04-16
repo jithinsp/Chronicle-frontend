@@ -66,7 +66,13 @@ export class CreateFamilyComponent {
       this.title=(this.mode==='edit')?'Edit':'Create';
   }
 
-  submitForm(){
+  isSubmitting = false;
+  submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
 
     if (this.mode === 'edit') {
       console.log(this.registerForm.value);
@@ -79,6 +85,7 @@ export class CreateFamilyComponent {
       },
       (error) => {
         console.error(error);
+        this.isSubmitting = false;
       }
     );
       // Example: this.dataService.updateRecord(this.recordId, this.form.value);
@@ -93,6 +100,7 @@ export class CreateFamilyComponent {
       },
       (error) => {
         console.error(error);
+        this.isSubmitting = false;
       }
     );
   }
@@ -104,6 +112,7 @@ export class CreateFamilyComponent {
   }
 
   resetForm() {
+    this.isSubmitting = false;
     this.registerForm.reset(); // Reset form values
     Object.keys(this.registerForm.controls).forEach(key => {
       this.registerForm.get(key).setErrors(null); // Clear validation errors for each control

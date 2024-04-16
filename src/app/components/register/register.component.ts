@@ -37,13 +37,20 @@ export class RegisterComponent implements OnInit{
     }
   }
 
-  submitForm(){
+  isSubmitting = false;
+  submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
     console.log(this.registerForm.value);
     this.service.register(this.registerForm.value).subscribe(
       (response)=> {
         if(response.id!=null){
           this.router.navigateByUrl("/login");
         }
+        this.isSubmitting = false;
       }
     )
   }

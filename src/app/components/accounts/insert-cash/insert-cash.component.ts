@@ -101,7 +101,13 @@ export class InsertCashComponent {
     return formattedData;
   }
 
+  isSubmitting = false;
   submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
     if (this.mode === 'edit') {
       console.log(this.registerForm.value);
       const dataForBackend = this.prepareDataForBackend();
@@ -111,9 +117,11 @@ export class InsertCashComponent {
           // this.registerForm.reset();
           this.resetForm();
           this.showSuccessMessage('Member updated successfully');
+          this.isSubmitting = false;
         },
         (error) => {
           console.error(error);
+          this.isSubmitting = false;
         }
       );
     } else {
@@ -126,9 +134,11 @@ export class InsertCashComponent {
           // this.registerForm.reset();
           this.resetForm();
           this.showSuccessMessage('cash registered successfully');
+          this.isSubmitting = false;
         },
         (error) => {
           console.error(error);
+          this.isSubmitting = false;
         }
       );
     }

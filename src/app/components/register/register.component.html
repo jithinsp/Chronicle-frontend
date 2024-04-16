@@ -21,6 +21,6 @@
             <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
         </div>
 
-        <button mat-raised-button color="primary" type="submit"  [disabled]="registerForm.invalid">Register</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid || isSubmitting">Submit</button>
     </form>
 </div>

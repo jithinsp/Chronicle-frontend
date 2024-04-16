@@ -44,9 +44,7 @@
             </mat-form-field>
           </div>
           
-        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
-          Submit
-        </button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid || isSubmitting">Submit</button>
       </form>
     </div>
   </mat-card>

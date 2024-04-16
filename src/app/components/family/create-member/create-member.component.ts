@@ -150,7 +150,13 @@ export class CreateMemberComponent {
   
   
 
-  submitForm(){
+  isSubmitting = false;
+  submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
     if (this.mode === 'edit') {
       console.log(this.registerForm.value);
       const dataForBackend = this.prepareDataForBackend();
@@ -163,6 +169,7 @@ export class CreateMemberComponent {
         },
         (error) => {
           console.error(error);
+          this.isSubmitting = false;
         }
       );
     } else {
@@ -177,6 +184,7 @@ export class CreateMemberComponent {
         },
         (error) => {
           console.error(error);
+          this.isSubmitting = false;
         }
       );
     } 
@@ -188,6 +196,7 @@ export class CreateMemberComponent {
   }
 
   resetForm() {
+    this.isSubmitting = false;
     this.registerForm.reset(); // Reset form values
     Object.keys(this.registerForm.controls).forEach(key => {
       this.registerForm.get(key).setErrors(null); // Clear validation errors for each control

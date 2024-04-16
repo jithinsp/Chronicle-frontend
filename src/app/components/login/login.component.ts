@@ -25,7 +25,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  isSubmitting = false;
   submitForm() {
+    // Prevent duplicate submissions
+    if (this.isSubmitting) {
+      return;
+    }
+    this.isSubmitting = true;
     
     this.service.login(this.loginForm.value).subscribe(
       (response) => {
@@ -36,6 +42,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('jwt', jwtToken);
           this.router.navigateByUrl("/dashboard");
         }
+        this.isSubmitting = false;
       }
     )
   }
