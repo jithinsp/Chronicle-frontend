@@ -58,15 +58,15 @@
     <mat-nav-list *ngIf="isAdmin">
 
       <mat-list-item>
-        <button routerLink="/family-register" mat-button class="light-button"><mat-icon>dashboard</mat-icon>
+        <button routerLink="/family-register" routerLinkActive="active"  mat-button class="light-button"><mat-icon>dashboard</mat-icon>
           Family</button>
       </mat-list-item>
 
       <mat-list-item>
-        <button routerLink="account-dashboard" mat-button><mat-icon>account_balance</mat-icon> Accounts</button>
+        <button routerLink="account-dashboard" routerLinkActive="active"  mat-button><mat-icon>account_balance</mat-icon> Accounts</button>
       </mat-list-item>
       <mat-list-item>
-        <button routerLink="account-type" mat-button><mat-icon>library_books</mat-icon> Account Type</button>
+        <button routerLink="account-type" routerLinkActive="active"  mat-button><mat-icon>library_books</mat-icon> Account Type</button>
       </mat-list-item>
 
     </mat-nav-list>
