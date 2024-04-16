@@ -196,11 +196,9 @@ export class CreateMemberComponent {
   }
 
   resetForm() {
+    this.registerForm.markAsPristine();
+    this.registerForm.markAsUntouched();
+    this.registerForm.reset();
     this.isSubmitting = false;
-    this.registerForm.reset(); // Reset form values
-    Object.keys(this.registerForm.controls).forEach(key => {
-      this.registerForm.get(key).setErrors(null); // Clear validation errors for each control
-    });
-    this.registerForm.markAsUntouched(); // Mark form as untouched
   }
 }
